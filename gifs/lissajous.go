@@ -16,11 +16,6 @@ var palette = []color.Color{
 	color.RGBA{0x00, 0x00, 0xdd, 0xff},
 	color.RGBA{0x00, 0xdd, 0x00, 0xff}}
 
-const (
-	whiteIndex = 0
-	blackIndex = 1
-)
-
 func main() {
 	lissajous(os.Stdout)
 }
