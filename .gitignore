@@ -110,3 +110,4 @@ gen### Go template
 bin/
 pkg/
 src/
+*.gif
