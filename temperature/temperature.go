@@ -14,26 +14,17 @@ func main() {
 	flag.Parse()
 
 	if *verbose {
-		fmt.Printf("Absolute zero:\n"+
-			"\tCelsius:\t%s\n"+
-			"\tKelvins:\t%s\n"+
-			"\tFahrenheit:\t%s\n",
+		printInfo("Absolute zero",
 			tempconv.AbsoluteZeroC,
 			tempconv.CToK(tempconv.AbsoluteZeroC),
 			tempconv.CToF(tempconv.AbsoluteZeroC))
 
-		fmt.Printf("Water freezing temperature:\n"+
-			"\tCelsius:\t%s\n"+
-			"\tKelvins:\t%s\n"+
-			"\tFahrenheit:\t%s\n",
+		printInfo("Water freezing temperature",
 			tempconv.FreezingC,
 			tempconv.CToK(tempconv.FreezingC),
 			tempconv.CToF(tempconv.FreezingC))
 
-		fmt.Printf("Water boiling temperature:\n"+
-			"\tCelsius:\t%s\n"+
-			"\tKelvins:\t%s\n"+
-			"\tFahrenheit:\t%s\n\n",
+		printInfo("Water boiling temperature",
 			tempconv.BoilingC,
 			tempconv.CToK(tempconv.BoilingC),
 			tempconv.CToF(tempconv.BoilingC))
@@ -44,11 +35,19 @@ func main() {
 		c := tempconv.Celsius(t)
 		k := tempconv.Kelvin(t)
 		f := tempconv.Fahrenheit(t)
-		fmt.Printf("%s = %s\n", c, tempconv.CToK(c))
-		fmt.Printf("%s = %s\n", c, tempconv.CToF(c))
-		fmt.Printf("%s = %s\n", k, tempconv.KToC(k))
-		fmt.Printf("%s = %s\n", k, tempconv.KToF(k))
-		fmt.Printf("%s = %s\n", f, tempconv.FToC(f))
-		fmt.Printf("%s = %s\n", f, tempconv.FToK(f))
+		format := "%s = %s\n"
+		fmt.Printf(format, c, tempconv.CToK(c))
+		fmt.Printf(format, c, tempconv.CToF(c))
+		fmt.Printf(format, k, tempconv.KToC(k))
+		fmt.Printf(format, k, tempconv.KToF(k))
+		fmt.Printf(format, f, tempconv.FToC(f))
+		fmt.Printf(format, f, tempconv.FToK(f))
 	}
+}
+func printInfo(title string, c tempconv.Celsius, k tempconv.Kelvin, f tempconv.Fahrenheit) {
+	fmt.Printf(title+":\n"+
+		"\tCelsius:\t%s\n"+
+		"\tKelvins:\t%s\n"+
+		"\tFahrenheit:\t%s\n",
+		c, k, f)
 }
